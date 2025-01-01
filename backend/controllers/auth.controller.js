@@ -2,7 +2,9 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
+
 //******************signup controller***********************************
+
 export const signupUser = async (req, res) => {
   try {
     const { fullName, username, password, confirmedPassword, gender } =
@@ -49,6 +51,7 @@ export const signupUser = async (req, res) => {
 };
 
 //******************login controller***********************************
+
 export const loginUser = async (req, res) => {
   try {
     const { password, username } = req.body;
@@ -77,6 +80,8 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+
 //******************logout controller***********************************
 
 export const logoutUser = async (req, res) => {
