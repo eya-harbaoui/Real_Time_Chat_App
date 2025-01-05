@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   IoMdHome,
   IoIosNotifications,
@@ -19,9 +19,8 @@ const sideBarItems = [
   { id: 5, title: "Logout", icon: <BiLogOut size={24} /> },
 ];
 
-export const SideBar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false); // Collapsed state
-  const [isOpen, setIsOpen] = useState(false); // Mobile menu state
+export const SideBar = ({ isCollapsed, setIsCollapsed }) => {
+  const [isOpen, setIsOpen] = React.useState(false); // Mobile menu state
 
   return (
     <>
@@ -35,11 +34,11 @@ export const SideBar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-40 flex-col items-start bg-purple-600 h-screen transition-transform duration-300 ${
+        className={`fixed top-0 left-0 z-40 flex-col items-start bg-purple-600 h-screen transition-all duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } ${isCollapsed ? "w-10" : "w-52"} md:translate-x-0`}
+        } ${isCollapsed ? "w-14" : "w-52"} md:translate-x-0`}
       >
-        <div className="flex items-start justify-between p-2">
+        <div className="flex items-start justify-between p-4">
           {!isCollapsed && (
             <h1 className="text-lg font-bold text-white">Talkio</h1>
           )}
@@ -58,12 +57,12 @@ export const SideBar = () => {
           {sideBarItems.map((item) => (
             <li
               key={item.id}
-              className="flex flex-row items-center space-x-2 text-white"
+              className="flex flex-row items-center space-x-2 text-white cursor-pointer hover:bg-purple-700 w-full p-2 rounded-md"
             >
               <span>{item.icon}</span>
-              <span className="text-lg font-medium">
-                {!isCollapsed && item.title}
-              </span>
+              {!isCollapsed && (
+                <span className="text-lg font-medium">{item.title}</span>
+              )}
             </li>
           ))}
         </ul>

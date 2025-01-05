@@ -2,7 +2,7 @@ import React from "react";
 
 export const SearchInput = () => {
   return (
-    <div className="input input-bordered flex items-center gap-2 w-full">
+    <div className="input input-bordered flex items-center gap-2 w-full h-14">
       <input type="text" className="grow" placeholder="Search" />
       <svg
         xmlns="http://www.w3.org/2000/svg"

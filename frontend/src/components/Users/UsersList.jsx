@@ -29,7 +29,7 @@ const users = [
 
 export const UsersList = () => {
   return (
-    <div className="card-body items-start bg-base-100 shadow-2xl rounded-xl space-y-4 w-full">
+    <div className="card-body items-start bg-base-100 shadow-xl rounded-xl space-y-4 w-full overflow-auto scrollbar-thin scrollbar-thumb-[#c0bdbdac] scrollbar-track-gray-200">
       <h2 className="text-xl font-bold">Users List</h2>
       <div className="flex flex-col w-full">
         {users.map((user) => {
