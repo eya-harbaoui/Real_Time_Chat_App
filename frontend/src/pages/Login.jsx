@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import AuthForm from "../components/Auth/AuthForm";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useLogin } from "../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
+
 export const Login = () => {
+  const navigate = useNavigate();
+
   const handleInputChange = (field, value) => {
     setFormData((prev) => {
       return { ...prev, [field]: value };
@@ -36,6 +40,10 @@ export const Login = () => {
   // A function that is called when the form is submitted
   const handleSubmit = async () => {
     await login(formData);
+    navigate("/");
+  };
+  const handleLinkButton = () => {
+    navigate("/signup");
   };
 
   return (
@@ -47,6 +55,7 @@ export const Login = () => {
         linkText="Don't have an account"
         icon={<FaRegCircleUser className="size-14 text-purple-600" />}
         handleSubmit={handleSubmit}
+        handleLinkButton={handleLinkButton}
       />
     </div>
   );

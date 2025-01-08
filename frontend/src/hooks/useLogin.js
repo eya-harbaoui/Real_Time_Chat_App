@@ -2,11 +2,11 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { AUTH_URL } from "../Endpoints";
-
+import { useAuthContext } from "../context/AuthContext";
 export const useLogin = () => {
   // State for tracking the loading status during the login process
   const [loading, setLoading] = useState(false);
-
+  const { setAuthUser } = useAuthContext();
   // Function to handle the login process
   const login = async (formData) => {
     // Validate the form data before proceeding with the login
@@ -20,6 +20,10 @@ export const useLogin = () => {
       const response = await axios.post(`${AUTH_URL}/login`, formData);
       console.log("login response ", response.data);
       toast.success("Login successful");
+      //store the user info in the localstorage
+      localStorage.setItem("chat-user", JSON.stringify(response.data));
+      //auth context
+      setAuthUser(response.data);
     } catch (error) {
       // Handle the error based on the response from the backend
       if (error.response && error.response.data) {

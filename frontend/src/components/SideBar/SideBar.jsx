@@ -1,26 +1,33 @@
 import React from "react";
 import {
-  IoMdHome,
-  IoIosNotifications,
-  IoIosSettings,
   IoIosArrowBack,
   IoIosArrowForward,
   IoMdMenu,
   IoMdClose,
 } from "react-icons/io";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import { BiLogOut } from "react-icons/bi";
-
-const sideBarItems = [
-  { id: 1, title: "Home", icon: <IoMdHome size={24} /> },
-  { id: 2, title: "Chat", icon: <IoChatbubbleEllipsesOutline size={24} /> },
-  { id: 3, title: "Notifications", icon: <IoIosNotifications size={24} /> },
-  { id: 4, title: "Settings", icon: <IoIosSettings size={24} /> },
-  { id: 5, title: "Logout", icon: <BiLogOut size={24} /> },
-];
+import { useNavigate } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
+import { sideBarItems } from "./SideBarUtils";
 
 export const SideBar = ({ isCollapsed, setIsCollapsed }) => {
   const [isOpen, setIsOpen] = React.useState(false); // Mobile menu state
+  const navigate = useNavigate();
+
+  const { loading, logout } = useLogout();
+
+  // Function to handle logout
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
+  const handleItem = (itemLink) => {
+    if (itemLink == "/logout") {
+      handleLogout();
+    } else {
+      navigate(itemLink);
+    }
+  };
 
   return (
     <>
@@ -58,6 +65,9 @@ export const SideBar = ({ isCollapsed, setIsCollapsed }) => {
             <li
               key={item.id}
               className="flex flex-row items-center space-x-2 text-white cursor-pointer hover:bg-purple-700 w-full p-2 rounded-md"
+              onClick={() => {
+                handleItem(item.link);
+              }}
             >
               <span>{item.icon}</span>
               {!isCollapsed && (

@@ -3,7 +3,7 @@ import React from "react";
 import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
 import ChatHeader from "./ChatHeader";
-const Chat = () => {
+const ChatCard = () => {
   const selectedUser = {
     id: 2,
     fullName: "Jane Smith",
@@ -64,4 +64,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default ChatCard;

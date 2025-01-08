@@ -21,7 +21,6 @@ export const FormField = ({
             type={inputType}
             className="grow"
             placeholder={inputPlaceholder}
-            defaultValue={inputType === "password" ? "password" : undefined}
             onChange={onChange}
           />
         </div>

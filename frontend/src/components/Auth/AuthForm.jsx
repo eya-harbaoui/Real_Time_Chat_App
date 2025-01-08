@@ -10,6 +10,7 @@ const AuthForm = ({
   icon,
   linkText,
   handleSubmit,
+  handleLinkButton,
 }) => {
   const onSubmit = (event) => {
     event.preventDefault();
@@ -52,7 +53,10 @@ const AuthForm = ({
           </div>
         </form>
         <div className="flex-col items-center justify-center mt-2 text-center">
-          <a className="text-sm text-purple-600 underline cursor-pointer hover:text-opacity-70">
+          <a
+            className="text-sm text-purple-600 underline cursor-pointer hover:text-opacity-70"
+            onClick={handleLinkButton}
+          >
             {linkText}
           </a>
         </div>

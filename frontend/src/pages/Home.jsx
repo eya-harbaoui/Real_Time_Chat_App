@@ -1,9 +1,8 @@
 import React from "react";
-import { SideBar } from "../components/SideBar";
+import { SideBar } from "../components/SideBar/SideBar";
 import { UsersList } from "../components/Users/UsersList";
 import { SearchInput } from "../components/SearchInput";
-import Chat from "../components/Chat/Chat";
-
+import HomeWelcome from "../components/Home/HomeWelcome";
 export const Home = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
@@ -21,7 +20,7 @@ export const Home = () => {
           <UsersList />
         </div>
         <div className="flex flex-col items-center w-full md:w-2/3 p-4">
-          <Chat />
+          <HomeWelcome />
         </div>
       </div>
     </div>

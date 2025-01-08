@@ -34,7 +34,7 @@ export const UsersList = () => {
       <div className="flex flex-col w-full">
         {users.map((user) => {
           return (
-            <div>
+            <div key={user.id}>
               <Conversation user={user} />
               <div className="divider my-0 py-0"></div>
             </div>

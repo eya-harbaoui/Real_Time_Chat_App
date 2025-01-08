@@ -1,17 +1,28 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
-import { UsersList } from "./components/Users/UsersList";
 import { Toaster } from "react-hot-toast";
+import { useAuthContext } from "./context/AuthContext";
 function App() {
+  const { authUser } = useAuthContext();
+  console.log("authuser", authUser);
   return (
     <div className="flex justify-center mt-5">
       <Routes>
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<SignUp />} />
+        <Route
+          path="/"
+          element={authUser ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/login"
+          element={authUser ? <Navigate to="/" /> : <Login />}
+        />
+        <Route
+          path="/signup"
+          element={authUser ? <Navigate to="/" /> : <SignUp />}
+        />
       </Routes>
       <Toaster />
     </div>

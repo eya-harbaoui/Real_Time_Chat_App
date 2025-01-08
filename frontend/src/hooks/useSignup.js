@@ -2,10 +2,11 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { AUTH_URL } from "../Endpoints";
-
+import { useAuthContext } from "../context/AuthContext";
 export const useSignup = () => {
   // State for tracking the loading status during the sign-up process
   const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
   // Function to handle the sign-up process
   const signup = async (formData) => {
@@ -18,6 +19,10 @@ export const useSignup = () => {
       const response = await axios.post(`${AUTH_URL}/signup`, formData);
       console.log("signup response ", response);
       toast.success("Signup successful");
+      //store the user info in the localstorage
+      localStorage.setItem("chat-user", JSON.stringify(response.data));
+      //auth context
+      setAuthUser(response.data);
     } catch (error) {
       // Handle the error based on the response from the backend
       if (error.response && error.response.data) {

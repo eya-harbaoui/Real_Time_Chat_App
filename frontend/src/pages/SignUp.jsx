@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import AuthForm from "../components/Auth/AuthForm";
 import { LuUserRoundPlus } from "react-icons/lu";
 import { useSignup } from "../hooks/useSignup";
+import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
+  const navigate = useNavigate();
+
   // Function for updating formData state when fill in the fields
   const handleInputChange = (field, value) => {
     setFormData((prev) => {
@@ -62,10 +65,14 @@ export const SignUp = () => {
 
   //A custom hook that provides a signup function to handle the sign-up process + a loading state to track if the sign-up is in progress
   const { loading, signup } = useSignup();
-  
+
   // A function that is called when the form is submitted
   const handleSubmit = async () => {
     await signup(formData);
+    navigate("/login");
+  };
+  const handleLinkButton = () => {
+    navigate("/login");
   };
 
   return (
@@ -76,6 +83,7 @@ export const SignUp = () => {
       linkText="Already have an account ?"
       icon={<LuUserRoundPlus className="size-14 text-purple-600" />}
       handleSubmit={handleSubmit}
+      handleLinkButton={handleLinkButton}
     />
   );
 };
