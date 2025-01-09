@@ -1,5 +1,6 @@
 import React from "react";
 import Conversation from "./Conversation";
+import useGetConversation from "../../hooks/useGetConversation";
 const users = [
   {
     id: 1,
@@ -28,14 +29,16 @@ const users = [
 ];
 
 export const UsersList = () => {
+  const { loading, conversations } = useGetConversation();
+  console.log("conversations", conversations);
   return (
     <div className="card-body items-start bg-base-100 shadow-xl rounded-xl space-y-4 w-full overflow-auto scrollbar-thin scrollbar-thumb-[#c0bdbdac] scrollbar-track-gray-200">
       <h2 className="text-xl font-bold">Users List</h2>
       <div className="flex flex-col w-full">
-        {users.map((user) => {
+        {conversations.map((conversation) => {
           return (
-            <div key={user.id}>
-              <Conversation user={user} />
+            <div key={conversation._id}>
+              <Conversation conversation={conversation} />
               <div className="divider my-0 py-0"></div>
             </div>
           );

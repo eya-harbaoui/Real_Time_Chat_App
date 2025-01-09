@@ -5,6 +5,7 @@ const protectRoute = async (req, res, next) => {
   try {
     //get the token from the cookie
     const token = req.cookies.jwt;
+    //console.log("token", token);
     //verify if the token exist
     if (!token) {
       return res
