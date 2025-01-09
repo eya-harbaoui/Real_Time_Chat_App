@@ -1,11 +1,12 @@
 import React from "react";
-
+import useSendMessage from "../../hooks/useSendMessage";
+import { IoIosSend } from "react-icons/io";
 const ChatInput = () => {
   const [message, setMessage] = React.useState("");
-
-  const handleSend = () => {
+  const { loading, sendMessage } = useSendMessage();
+  const handleSend = async () => {
     if (message.trim()) {
-      onSend(message);
+      await sendMessage(message);
       setMessage("");
     }
   };
@@ -20,10 +21,10 @@ const ChatInput = () => {
         onChange={(e) => setMessage(e.target.value)}
       />
       <button
-        className="btn bg-purple-600 text-white ml-2"
+        className="btn bg-purple-600 text-white ml-2 hover:bg-purple-500 transition-colors duration-200 "
         onClick={handleSend}
       >
-        Send
+        <IoIosSend size={20} />
       </button>
     </div>
   );

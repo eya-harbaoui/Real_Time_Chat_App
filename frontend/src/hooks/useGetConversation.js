@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { USERS_URL } from "../Endpoints";
+import { USERS_URL } from "../Endpoints/Endpoints";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuthContext } from "../context/AuthContext";

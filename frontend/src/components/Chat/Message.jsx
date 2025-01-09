@@ -1,11 +1,11 @@
 import React from "react";
 
-export const Message = ({ avatar, username, time, text, isSelf }) => {
+export const Message = ({ profilePic, username, time, text, isSelf }) => {
   return (
     <div className={`chat ${isSelf ? "chat-end" : "chat-start"}`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
-          <img src={avatar} alt="Avatar" />
+          <img src={profilePic} alt="Avatar" />
         </div>
       </div>
       <div className="chat-header space-x-1 m-1">

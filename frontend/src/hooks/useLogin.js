@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { AUTH_URL } from "../Endpoints";
+import { AUTH_URL } from "../Endpoints/Endpoints";
 import { useAuthContext } from "../context/AuthContext";
 export const useLogin = () => {
   // State for tracking the loading status during the login process

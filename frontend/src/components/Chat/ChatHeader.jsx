@@ -8,7 +8,7 @@ const ChatHeader = ({ user }) => {
       <div className="flex space-x-4 items-center cursor-pointer">
         <div className="avatar online">
           <div className="w-12 rounded-full">
-            <img src={user.avatar} alt="User Avatar" />
+            <img src={user.profilePic} alt="User Avatar" />
           </div>
         </div>
         <div>

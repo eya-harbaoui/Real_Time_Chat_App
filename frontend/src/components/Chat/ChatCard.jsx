@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
 import ChatHeader from "./ChatHeader";
+import useConversation from "../../zustand/useConversation";
+//this component is appearing when we want to chat with a selected user
 const ChatCard = () => {
-  const selectedUser = {
-    id: 2,
-    fullName: "Jane Smith",
-    username: "jane",
-    avatar: `https://avatar.iran.liara.run/public/girl?username=jane`,
-  };
+  //get the selected user from the store
+  const { selectedConversation, setSelectedConversation } = useConversation();
+  //my profile pic
+  const selfProfilePic =
+    "https://avatar.iran.liara.run/public/girl?username=ayou";
 
-  const selfAvatar = "https://placekitten.com/100/101";
+  //messages
 
   const [messages, setMessages] = React.useState([
     {
-      avatar: selectedUser.avatar,
-      username: selectedUser.username,
+      profilePic: selectedConversation.profilePic,
+      username: selectedConversation.username,
       time: "12:30 PM",
       text: "Hi, how are you?",
       isSelf: false,
     },
     {
-      avatar: selfAvatar,
+      profilePic: selfProfilePic,
       username: "Me",
       time: "12:31 PM",
       text: "I'm doing well, thank you! How about you?",
@@ -32,7 +33,7 @@ const ChatCard = () => {
 
   const handleSendMessage = (text) => {
     const newMessage = {
-      avatar: selfAvatar,
+      profilePic: selfProfilePic,
       username: "Me",
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
@@ -47,13 +48,13 @@ const ChatCard = () => {
   return (
     <div className="card-body bg-base-100 shadow-2xl rounded-xl w-full flex flex-col h-full">
       {/* Header */}
-      <ChatHeader user={selectedUser} />
+      <ChatHeader user={selectedConversation} />
 
       <div className="divider my-0 py-0"></div>
 
       {/* Conversation Messages */}
       <div className="flex-grow overflow-y-auto">
-        <MessageList messages={messages} selfAvatar={selfAvatar} />
+        <MessageList messages={messages} selfProfilePic={selfProfilePic} />
       </div>
 
       {/* Input Field */}
