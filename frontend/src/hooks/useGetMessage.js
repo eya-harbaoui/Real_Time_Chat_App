@@ -1,27 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MESSAGES_URL } from "../Endpoints/Endpoints.js";
 import useConversation from "../zustand/useConversation.js";
 import toast from "react-hot-toast";
 
-const useSendMessage = () => {
+const useGetMessage = () => {
   const [loading, setLoading] = useState(false);
-  const { selectedConversation, messages, setMessages } = useConversation();
-
-  const sendMessage = async (message) => {
+  const { messages, setMessages, selectedConversation } = useConversation();
+  const getMessage = async () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        `${MESSAGES_URL}/send/${selectedConversation._id}`,
-        { message },
+      const response = await axios.get(
+        `${MESSAGES_URL}/get/${selectedConversation._id}`,
         { withCredentials: true }
       );
       const data = response.data;
       if (data.error) {
         toast.error("Error while sending message");
       } else {
-        setMessages([...messages, data]);
+        setMessages(data);
       }
     } catch (error) {
       toast.error(error.message);
@@ -29,7 +27,12 @@ const useSendMessage = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    if (selectedConversation?._id) {
+      getMessage();
+    }
+  }, [selectedConversation?._id, setMessages]);
 
-  return { loading, sendMessage };
+  return { messages, loading };
 };
-export default useSendMessage;
+export default useGetMessage;

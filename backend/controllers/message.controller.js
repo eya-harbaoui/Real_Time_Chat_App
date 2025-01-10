@@ -9,6 +9,7 @@ export const sendMessage = async (req, res) => {
     const message = req.body.message;
     //get the senderId from the request user key (added by the middleware  : protectRoute)
     const senderId = req.user._id;
+    console.log(receiverId, message, senderId);
     //$all : search for all documents where participants contain both user1 and user2 (order does not matter)
     // possibilites : [user1,user2], [user2,user1],[user1,user2,user3]
     let conversation = await Conversation.findOne({

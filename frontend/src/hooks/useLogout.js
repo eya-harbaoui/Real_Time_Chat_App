@@ -11,7 +11,9 @@ export const useLogout = () => {
   const logout = async () => {
     try {
       // Send POST request to the logout endpoint
-      const response = await axios.post(`${AUTH_URL}/logout`);
+      const response = await axios.post(`${AUTH_URL}/logout`, {
+        withCredentials: true,
+      });
       console.log("logout response ", response.data);
       toast.success("logout successful");
       //retreive the user info from the localstorage

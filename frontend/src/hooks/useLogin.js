@@ -17,7 +17,9 @@ export const useLogin = () => {
 
     try {
       // Send POST request to the login endpoint with formData
-      const response = await axios.post(`${AUTH_URL}/login`, formData);
+      const response = await axios.post(`${AUTH_URL}/login`, formData, {
+        withCredentials: true,
+      });
       console.log("login response ", response.data);
       toast.success("Login successful");
       //store the user info in the localstorage

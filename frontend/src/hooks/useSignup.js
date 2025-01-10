@@ -16,7 +16,9 @@ export const useSignup = () => {
 
     try {
       // Send POST request to the signup endpoint with formData
-      const response = await axios.post(`${AUTH_URL}/signup`, formData);
+      const response = await axios.post(`${AUTH_URL}/signup`, formData, {
+        withCredentials: true,
+      });
       console.log("signup response ", response);
       toast.success("Signup successful");
       //store the user info in the localstorage

@@ -3,7 +3,8 @@ import { LuMessageCircleMore } from "react-icons/lu";
 import useConversation from "../../zustand/useConversation";
 
 const Conversation = ({ conversation, lastIdx }) => {
-  const { selectedConversation, setSelectedConversation } = useConversation();
+  const { selectedConversation, setSelectedConversation, messages } =
+    useConversation();
   const isSelected = selectedConversation?._id === conversation?._id;
 
   return (
@@ -33,7 +34,7 @@ const Conversation = ({ conversation, lastIdx }) => {
               isSelected ? "text-purple-700" : "text-gray-800"
             }`}
           >
-            {conversation.username}
+            {conversation.fullName}
           </h2>
         </div>
 

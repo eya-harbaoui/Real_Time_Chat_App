@@ -2,7 +2,6 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
-
 //******************signup controller***********************************
 
 export const signupUser = async (req, res) => {
@@ -80,7 +79,6 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 //******************logout controller***********************************
 

@@ -3,8 +3,10 @@ import useSendMessage from "../../hooks/useSendMessage";
 import { IoIosSend } from "react-icons/io";
 const ChatInput = () => {
   const [message, setMessage] = React.useState("");
-  const { loading, sendMessage } = useSendMessage();
+  const { sendMessage } = useSendMessage();
+
   const handleSend = async () => {
+    //console.log("message", message);
     if (message.trim()) {
       await sendMessage(message);
       setMessage("");

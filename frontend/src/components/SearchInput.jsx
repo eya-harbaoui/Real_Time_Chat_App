@@ -1,21 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import useConversation from "../zustand/useConversation";
+import useGetConversation from "../hooks/useGetConversation";
+import toast from "react-hot-toast";
+import { MdPersonSearch } from "react-icons/md";
 
 export const SearchInput = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const { setSelectedConversation } = useConversation();
+  const { conversations } = useGetConversation();
+
+  const handleSearch = () => {
+    if (!searchTerm) return;
+    if (searchTerm.length < 3) {
+      return toast.error("Search term should be at least 3 characters long");
+    }
+    const filteredConversations = conversations.filter((c) => {
+      return c.fullName.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    if (filteredConversations.length > 0) {
+      setSelectedConversation(filteredConversations[0]); // Vous pouvez ajuster pour gérer plusieurs résultats si nécessaire
+      setSearchTerm("");
+    } else {
+      toast.error("No conversation found!");
+    }
+  };
+
   return (
-    <div className="input input-bordered flex items-center gap-2 w-full h-14">
-      <input type="text" className="grow" placeholder="Search" />
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        className="h-4 w-4 opacity-70"
-      >
-        <path
-          fillRule="evenodd"
-          d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-          clipRule="evenodd"
+    <div className="flex justify-between items-center w-full">
+      <div className="flex w-full h-10">
+        <input
+          type="text"
+          className="input input-bordered grow h-full" // Utilisation de h-full pour donner la même hauteur
+          placeholder="Search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} // Mise à jour du terme de recherche
         />
-      </svg>
+        <button
+          onClick={handleSearch} // Déclenche la recherche au clic
+          className="border border-purple-600 text-purple-600 px-4 py-2 rounded-lg flex items-center justify-center ml-2 h-full" // Utilisation de h-full ici aussi
+          aria-label="Search"
+        >
+          <MdPersonSearch size={18} />
+        </button>
+      </div>
     </div>
   );
 };
