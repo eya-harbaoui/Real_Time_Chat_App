@@ -9,7 +9,7 @@ import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import usersRouters from "./routes/user.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
-
+import cors from "cors";
 //variables
 //config call
 dotenv.config();
@@ -20,11 +20,15 @@ const PORT = process.env.PORT || 5000;
 //middlewares (app.use to apply middlewares globally : should be declared before routes def)
 app.use(express.json()); // parse the incoming requests with JSON payloads(from req.body)
 app.use(cookieParser());
-// Alternatively, you can specify allowed origins:
-
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Update with your frontend URL
+  })
+);
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/users", usersRouters);
+
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("*", (req, res) => {
