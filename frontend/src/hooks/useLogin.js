@@ -29,7 +29,7 @@ export const useLogin = () => {
     } catch (error) {
       // Handle the error based on the response from the backend
       if (error.response && error.response.data) {
-        // Check if the error is related to wrong username or password
+        // Check if the error is related to wrong email or password
         if (error.response.data.error === "User not found") {
           toast.error("User not found");
         } else if (error.response.data.error === "Invalid password") {
@@ -52,10 +52,10 @@ export const useLogin = () => {
 
 // Function to handle input validation errors
 const handleInputErrors = (formData) => {
-  const { username, password } = formData;
+  const { email, password } = formData;
 
   // Check if any required field is empty
-  if (!username || !password) {
+  if (!email || !password) {
     toast.error("Please fill in all fields!");
     return false;
   }

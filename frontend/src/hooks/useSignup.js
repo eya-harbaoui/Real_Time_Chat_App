@@ -28,10 +28,10 @@ export const useSignup = () => {
     } catch (error) {
       // Handle the error based on the response from the backend
       if (error.response && error.response.data) {
-        // Check if the error is related to username already existing
-        if (error.response.data.error === "Username already exists") {
+        // Check if the error is related to email already existing
+        if (error.response.data.error === "email already exists") {
           toast.error(
-            "Already registred ! Please choose another username or login."
+            "Already registred ! Please choose another email or login."
           );
         } else {
           toast.error(
@@ -51,11 +51,11 @@ export const useSignup = () => {
 
 // Function to handle input validation errors
 const handleInputErrors = (formData) => {
-  const { fullName, gender, username, password, confirmedPassword } = formData;
+  const { fullName, gender, email, password, confirmedPassword } = formData;
   console.log("formData", formData);
 
   // Check if any required field is empty
-  if (!fullName || !gender || !username || !password || !confirmedPassword) {
+  if (!fullName || !gender || !email || !password || !confirmedPassword) {
     toast.error("Please fill in all fields!");
     return false;
   }

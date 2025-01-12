@@ -15,9 +15,9 @@ export const Login = () => {
   const loginFields = [
     {
       type: "text",
-      placeholder: "Enter username ...",
-      label: "Username",
-      onChange: (e) => handleInputChange("username", e.target.value),
+      placeholder: "Enter email ...",
+      label: "email",
+      onChange: (e) => handleInputChange("email", e.target.value),
     },
     {
       type: "password",
@@ -30,7 +30,7 @@ export const Login = () => {
   // formData state
 
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 

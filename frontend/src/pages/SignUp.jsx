@@ -24,9 +24,9 @@ export const SignUp = () => {
     },
     {
       type: "text",
-      placeholder: "Enter your username ...",
-      label: "Username",
-      onChange: (e) => handleInputChange("username", e.target.value),
+      placeholder: "Enter your email ...",
+      label: "email",
+      onChange: (e) => handleInputChange("email", e.target.value),
     },
     {
       type: "select",
@@ -58,7 +58,7 @@ export const SignUp = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "",
-    username: "",
+    email: "",
     password: "",
     confirmedPassword: "",
   });

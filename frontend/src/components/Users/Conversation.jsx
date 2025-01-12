@@ -22,13 +22,13 @@ const Conversation = ({ conversation, lastIdx }) => {
           <div className="w-12 h-12 rounded-full border-2 border-purple-600 overflow-hidden">
             <img
               src={conversation.profilePic}
-              alt={`${conversation.username}'s profile`}
+              alt={`${conversation.fullName}'s profile`}
               className="object-cover"
             />
           </div>
         </div>
 
-        {/* Username */}
+        {/* fullName */}
         <h2
           className={`mt-2 md:mt-0 md:ml-4 text-sm md:text-base font-semibold transition-colors text-center md:text-left
           ${isSelected ? "text-purple-700" : "text-gray-800"}

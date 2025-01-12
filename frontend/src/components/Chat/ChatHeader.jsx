@@ -19,7 +19,7 @@ const ChatHeader = ({ user }) => {
           </div>
         </div>
         <div>
-          <h2 className="text-lg font-semibold">{user.username}</h2>
+          <h2 className="text-lg font-semibold">{user.fullName}</h2>
         </div>
       </div>
       <div className="flex space-x-5 text-purple-600">

@@ -135,7 +135,7 @@ const ChatInput = () => {
     <div className="relative flex flex-col w-full p-4 bg-white border-t">
       {/* Preview Area */}
       {(filePreview || file || audio) && (
-        <div className="mb-2 p-2 bg-gray-100 rounded-lg flex items-center">
+        <div className="mb-2 p-2 bg-gray-100 rounded-lg flex items-center space-x-2">
           {filePreview && (
             <img
               src={filePreview}
@@ -163,7 +163,7 @@ const ChatInput = () => {
       )}
 
       {/* Input Area */}
-      <div className="flex items-center w-full">
+      <div className="flex items-center w-full space-x-3">
         <div className="flex-grow relative">
           <input
             type="text"
@@ -174,7 +174,7 @@ const ChatInput = () => {
             onKeyPress={handleKeyPress}
             disabled={isLoading}
           />
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center mr-2">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center space-x-2 mr-2">
             <button
               className="p-2 text-gray-500 hover:text-purple-600 transition-colors duration-200"
               disabled={isLoading}

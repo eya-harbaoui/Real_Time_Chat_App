@@ -34,7 +34,7 @@ export const Message = ({ message }) => {
 
       <div className="chat-header space-x-1 m-1">
         <span>
-          {isSelf ? authUser.username : selectedConversation.username}
+          {isSelf ? authUser.fullName : selectedConversation.fullName}
         </span>
         <time className="text-xs opacity-50">{time}</time>
       </div>

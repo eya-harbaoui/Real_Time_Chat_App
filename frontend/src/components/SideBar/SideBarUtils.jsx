@@ -19,12 +19,6 @@ export const sideBarItems = [
 
   {
     id: 3,
-    title: "Settings",
-    icon: <IoIosSettings size={24} />,
-    link: "/settings",
-  },
-  {
-    id: 4,
     title: "Logout",
     icon: <BiLogOut size={24} />,
     link: "/logout",

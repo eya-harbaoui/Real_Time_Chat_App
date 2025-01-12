@@ -48,7 +48,7 @@ export const MessageContent = ({ message }) => {
               }}
             />
             {message.fileName && (
-              <div className="text-xs opacity-75 mt-1">
+              <div className="text-[5px] opacity-75 mt-1">
                 {formatFileSize(message.fileSize)}
               </div>
             )}
@@ -65,12 +65,12 @@ export const MessageContent = ({ message }) => {
                 href={message.fileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-blue-200 text-sm"
+                className="underline hover:text-blue-200 text-xs"
               >
                 {message.fileName || "Download file"}
               </a>
             ) : (
-              <span className="text-sm">
+              <span className="text-xs">
                 {message.fileName || "File unavailable"}
               </span>
             )}
