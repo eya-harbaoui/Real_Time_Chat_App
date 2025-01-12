@@ -4,13 +4,13 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 //files imports
+import { app, server } from "./socket/socket.js";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import usersRouters from "./routes/user.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 //variables
-const app = express();
 const PORT = process.env.PORT || 5000;
 //config call
 dotenv.config();
@@ -35,7 +35,7 @@ app.use("/api/message", messageRoutes);
 app.use("/api/users", usersRouters);
 
 // Run the server on port 5000 and connect to mongoDB
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server running on port ${PORT}`);
 });

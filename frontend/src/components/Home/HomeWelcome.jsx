@@ -4,7 +4,7 @@ import { useAuthContext } from "../../context/AuthContext";
 const HomeWelcome = () => {
   const { authUser } = useAuthContext();
   return (
-    <div className="card-body bg-base-100 shadow-2xl rounded-xl w-full flex flex-col h-full items-center">
+    <div className="card-body bg-base-100 shadow-2xl rounded-xl w-full flex flex-col max-h-full items-center">
       <h1 className="text-3xl font-bold text-center text-purple-600">
         <span className=" text-gray-900">Welcome </span> {authUser.username} !{" "}
       </h1>

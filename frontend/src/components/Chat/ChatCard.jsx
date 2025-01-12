@@ -15,7 +15,7 @@ const ChatCard = () => {
   console.log("messages", messages);
 
   return (
-    <div className="card-body bg-base-100 shadow-2xl rounded-xl w-full flex flex-col h-screen">
+    <div className="card-body bg-base-100 shadow-2xl rounded-xl w-full flex flex-col h-auto">
       {/* Header */}
       <ChatHeader user={selectedConversation} />
 

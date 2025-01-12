@@ -9,27 +9,25 @@ import useConversation from "../zustand/useConversation";
 export const Home = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   const { selectedConversation, setSelectedConversation } = useConversation();
+
   useEffect(() => {
-    //cleanup when component unmount
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
 
   return (
-    <div className="flex flex-row w-full h-screen">
+    <div className="flex flex-row justify-center w-full h-screen">
       <SideBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
       <div
         className={`flex flex-col w-full transition-all duration-300 ${
           isCollapsed ? "ml-16" : "ml-52"
-        } md:flex-row`}
+        } md:flex-row h-full space-y-4`}
       >
-        <div className="flex flex-col space-y-4 items-center w-full md:w-1/3 p-4">
+        <div className="flex flex-col space-y-4 items-center w-full md:w-1/3 px-4 max-h-full">
           <SearchInput />
           <UsersList />
-          <UsersList />
         </div>
-        <div className="flex flex-col items-center w-full md:w-2/3 p-4">
-          {!selectedConversation ? <HomeWelcome /> : <ChatCard />}
-        </div>
+
+        {!selectedConversation ? <HomeWelcome /> : <ChatCard />}
       </div>
     </div>
   );

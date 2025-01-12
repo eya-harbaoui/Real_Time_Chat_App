@@ -1,8 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { Message } from "./Message";
 import MessageSkeleton from "./MessageSkeleton";
+import useListenMessages from "../../hooks/useListenMessages";
 const MessageList = ({ messages, loading }) => {
   const lastMessageRef = useRef();
+  
+  // Call the custom hook to listen for new incoming messages
+
+  useListenMessages();
 
   useEffect(() => {
     setTimeout(() => {
@@ -11,7 +16,7 @@ const MessageList = ({ messages, loading }) => {
   }, [messages]);
 
   return (
-    <div className="flex-grow w-full max-h-screen bg-base-100 overflow-y-scroll p-4 scrollbar-thin scrollbar-thumb-[#c0bdbdac] scrollbar-track-gray-200">
+    <div className="flex-grow w-full max-h-[80vh] bg-base-100 overflow-y-scroll p-4 scrollbar-thin scrollbar-thumb-[#c0bdbdac] scrollbar-track-gray-200">
       {!loading &&
         messages.length > 0 &&
         messages.map((msg) => (

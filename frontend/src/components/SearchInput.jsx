@@ -26,7 +26,7 @@ export const SearchInput = () => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full">
+    <div className="flex justify-between items-center w-full px-2">
       <div className="flex w-full h-10">
         <input
           type="text"

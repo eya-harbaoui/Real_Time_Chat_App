@@ -1,6 +1,7 @@
 import { IoMdHome, IoIosNotifications, IoIosSettings } from "react-icons/io";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export const sideBarItems = [
   {
@@ -11,10 +12,11 @@ export const sideBarItems = [
   },
   {
     id: 2,
-    title: "Notifications",
-    icon: <IoIosNotifications size={24} />,
-    link: "/notifications",
+    title: "Profile",
+    icon: <FaRegUserCircle size={23} />,
+    link: "/profile",
   },
+
   {
     id: 3,
     title: "Settings",
