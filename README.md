@@ -79,4 +79,16 @@ Deploy on Render
 3. Start chatting in real-time!
 
 ## Demo screenshots : 
+- **Signup** : Create a new account
+![Alt text](chatAppImages/signup.png)
+
+- **Login** : Access to your account
+![Alt text](chatAppImages/login.png)
+ - **Welcome page (List conversations / search for a conversation / collapse sidebar / start a conversation )** :
+![Alt text](chatAppImages/main.png)
+
+ - **Example of chat** :
+![Alt text](chatAppImages/chat1.png)
+![Alt text](chatAppImages/chat2.PNG)
+
 
