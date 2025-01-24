@@ -11,6 +11,7 @@ This is a real-time chat application built using the **MERN stack** (MongoDB, Ex
 - **Persistent chat history** stored in MongoDB.
 - **Real-time notifications** for new messages.
 - **can send files , voice notes , text messages and emojis**.
+- **Using cloudinary cloud for files storage**
 
 ## Tech Stack
 
@@ -26,6 +27,7 @@ This is a real-time chat application built using the **MERN stack** (MongoDB, Ex
 - Socket.IO
 - JSON Web Tokens (JWT)
 - bcrypt (for password hashing)
+- cloudinary
 
 ### Deployment:
 - **Render** for hosting both the frontend and backend.
@@ -60,7 +62,7 @@ Ensure you have the following installed:
    ```
 
 4. Set up environment variables:
-   - Create a `.env` file in the `server` directory with your config.
+   - Create a `.env` file in the `server` directory with your config (database config / cloudinary /PORT/ jwt secret key).
    - change the `Endpoints.js` file in the `frontend` directory if needed for API URLs.
 
 5. Start the development servers:
