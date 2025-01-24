@@ -168,13 +168,13 @@ const ChatInput = () => {
           <input
             type="text"
             placeholder="Type a message"
-            className="w-full rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             disabled={isLoading}
           />
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center mr-2">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center space-x-2 mr-2">
             <button
               className="p-2 text-gray-500 hover:text-purple-600 transition-colors duration-200"
               disabled={isLoading}
