@@ -1,6 +1,6 @@
 # Real_Time_Chat_App
 
-This is a real-time chat application built using the **MERN stack** (MongoDB, Express, React, Node.js) with **Socket.IO** for real-time communication. The app allows users to create accounts, log in, and engage in live chat in individual or group settings.
+This is a real-time chat application built using the **MERN stack** (MongoDB, Express, React, Node.js) with **Socket.IO** for real-time communication. The app allows users to create accounts, log in, and engage in live chats.
 
 ## Features
 
