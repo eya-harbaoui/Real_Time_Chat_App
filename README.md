@@ -93,4 +93,9 @@ Deploy on Render
 ![Alt text](chatAppImages/chat1.png)
 ![Alt text](chatAppImages/chat2.PNG)
 
+**Porfile Page** : 
+![Alt text](chatAppImages/profile.png)
+![Alt text](chatAppImages/editProfile.png)
+
+
 
