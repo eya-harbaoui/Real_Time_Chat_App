@@ -168,7 +168,7 @@ const ChatInput = () => {
           <input
             type="text"
             placeholder="Type a message"
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
+            className="w-full md:px-4 px-2 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-purple-500"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
